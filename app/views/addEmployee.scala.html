@@ -1,0 +1,57 @@
+@(employeeForm : Form[models.Employee],user: models.users.User)
+@import helper._
+
+@main("Employee", user){
+    <p class="lead">Add a new Employee</p>
+
+@form(routes.HomeController.addEmployeeSubmit(), 'class -> "form-horizontal", 'role -> "form"){
+
+@CSRF.formField
+
+
+@inputText(employeeForm("empName"), '_label -> "Name", 'class -> "form-control")
+@inputText(employeeForm("address"), '_label -> "Address", 'class -> "form-control")
+@inputText(employeeForm("department"), '_label -> "Project", 'class -> "form-control")                 
+
+@select(
+
+employeeForm("category.id"),options(Category.options),'_label ->"Department",'_default -> "--Choose department please--",
+'_showConstraints -> false, 'class-> "form-control"
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@inputText(employeeForm("empID"), '_label -> "", 'hidden -> "hidden")
+
+
+<div class="actions">
+<input type="submit" value = "Press To Add Employee" class="btn btn-primary">
+<a href ="@routes.HomeController.employee(0)">
+    <button type="button" class="btn btn-warning">Cancel</button>
+</a>
+
+
+
+
+</div>
+
+}
+
+
+}
+
+

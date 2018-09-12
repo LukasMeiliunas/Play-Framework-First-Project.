@@ -1,0 +1,33 @@
+clear
+h2-browser
+exit
+h2-browser
+run
+exit
+h2-browser
+run
+clean
+run
+h2-browser
+run
+clean
+run
+clean
+run
+clean
+kill -a
+kill help
+clear help
+help
+kill
+sbt
+run
+h2-browser
+run
+h2-browser
+run
+h2-browser
+run#
+run
+h2-browser
+run

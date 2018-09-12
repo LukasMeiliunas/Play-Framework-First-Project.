@@ -1,0 +1,93 @@
+@(employee: List[models.Employee], categories: List[models.Category], user: models.users.User)
+
+
+
+@main("Employees",user) {
+
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="list-group list-group-flush">
+                <a href="@routes.HomeController.employee(0)" class="list-group-item">All Departments</a>
+
+           @for(c<-categories){
+
+            <a href="@routes.HomeController.employee(c.getID)" class="list-group-item">@c.getName
+            
+                <span class="badge badge-primary badge-pill">@c.getEmployees.size()</span>
+            </a>
+           }
+
+        </div>
+    </div>
+    
+
+</div>
+
+    
+        
+    <div class="col-sm-10">
+    <div class="well">
+<table class="table ">
+    <thead>
+    <tr>
+    
+    <th>EmpID</th>
+    
+    <th>Employee Name</th>
+    
+    <th>Address</th>
+    
+
+    <th>Department</th>
+    
+    
+    </tr>
+    
+    </thead>
+    
+    <tbody>
+    
+    
+    @for(e<-employee){
+    <tr>
+    
+    <td>@e.getEmpID</td>
+    
+    <td>@e.getEmpName</td>
+    
+    <td>@e.getAddress</td>
+
+    <td>@e.getCategory.getName</td>
+     
+        <td>
+            <a href="@routes.HomeController.updateEmployee(e.getEmpID)" class="button-xs btn-primary">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+           </td>
+
+        <td>
+         <a href="@routes.HomeController.deleteEmployee(e.getEmpID)" class="button-xs btn-primary">
+             <span class="glyphicon glyphicon-remove-circle"></span>
+         </a>
+        </td>
+    </tr>
+
+
+}
+    </tbody>
+    
+    </table> 
+
+    <div class="btn-toolbar">
+            <a href="@routes.HomeController.addEmployee()">
+                    <button class="btn btn-primary">Add new Employee</button>
+                  </a>  
+            </div>
+</div>
+    </div>
+
+   
+
+
+
+}
